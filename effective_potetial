@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+#=============================================
+# goal : Plot the effective potential of two body problem
+#=========================================================
+import numpy as np
+import matplotlib.pyplot as plt
+
+def effective_potental_ext(p,r):
+    """effective potential for the extrinsec case"""
+    effec = p**2/(2*(r**2)) - 1/r
+    return effec
+
+def effective_potental_int(p,r):
+    """effective potencial for the intrinsec case"""
+    effec = p**2/(2*r**2) + np.log(r)
+    return effec
+
+def plot_pot(f,p):
+    r = np.linspace(0.01,5,1000)
+    plt.figure()
+    plt.plot(r,f(p,r))
+    plt.show()
+
+plot_pot(effective_potental_int,1)
